@@ -5,9 +5,9 @@ import torch.optim as optim
 import torch.nn as nn
 import torch.nn.functional as F
 
-
 from model import CNN
 
+### SET UP DATASET ###
 transform = transforms.Compose(
     [transforms.ToTensor(),
      transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
@@ -27,11 +27,14 @@ testloader = torch.utils.data.DataLoader(testset, batch_size=batch_size,
 classes = ('plane', 'car', 'bird', 'cat',
            'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
+
+### DEFINE MODEL, LOSS & OPTIMIZER ###
 net = CNN()
 
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
 
+### TRAINING LOOP ###
 for epoch in range(2):  # loop over the dataset multiple times
 
     running_loss = 0.0
@@ -56,6 +59,7 @@ for epoch in range(2):  # loop over the dataset multiple times
 
 print('Finished Training')
 
+### EVALUATE MODEL ###
 correct = 0
 total = 0
 # since we're not training, we don't need to calculate the gradients for our outputs
