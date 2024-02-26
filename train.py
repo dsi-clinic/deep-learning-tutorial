@@ -7,6 +7,8 @@ import torch.nn.functional as F
 
 from model import CNN
 
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
 ### SET UP DATASET ###
 transform = transforms.Compose(
     [transforms.ToTensor(),
@@ -30,9 +32,10 @@ classes = ('plane', 'car', 'bird', 'cat',
 
 ### DEFINE MODEL, LOSS & OPTIMIZER ###
 net = CNN()
+net = net.to(device)
 
-criterion = nn.CrossEntropyLoss()
-optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
+criterion = nn.BCELoss()
+optimizer = optim.SGD(net.fc3.parameters(), lr=1e-6, momentum=0.9)
 
 ### TRAINING LOOP ###
 for epoch in range(2):  # loop over the dataset multiple times
@@ -42,13 +45,11 @@ for epoch in range(2):  # loop over the dataset multiple times
         # get the inputs; data is a list of [inputs, labels]
         inputs, labels = data
 
-        # zero the parameter gradients
-        optimizer.zero_grad()
-
         # forward + backward + optimize
         outputs = net(inputs)
-        loss = criterion(outputs, labels)
+        loss = criterion(outputs, labels.float())
         loss.backward()
+        optimizer.zero_grad()
         optimizer.step()
 
         # print statistics
@@ -67,7 +68,7 @@ with torch.no_grad():
     for data in testloader:
         images, labels = data
         # calculate outputs by running images through the network
-        outputs = net(images)
+        outputs = net(images.to(device))
         # the class with the highest energy is what we choose as prediction
         _, predicted = torch.max(outputs.data, 1)
         total += labels.size(0)
