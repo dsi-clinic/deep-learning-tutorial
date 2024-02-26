@@ -29,18 +29,24 @@ classes = ('plane', 'car', 'bird', 'cat',
 
 
 ### DEFINE MODEL, LOSS & OPTIMIZER ###
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 net = CNN()
+net = net.to(device)
 
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
 
 ### TRAINING LOOP ###
-for epoch in range(2):  # loop over the dataset multiple times
+epochs = 4
+for epoch in range(epochs):  # loop over the dataset multiple times
 
     running_loss = 0.0
     for i, data in enumerate(trainloader, 0):
         # get the inputs; data is a list of [inputs, labels]
         inputs, labels = data
+
+        inputs = inputs.to(device)
+        labels = labels.to(device)
 
         # zero the parameter gradients
         optimizer.zero_grad()
