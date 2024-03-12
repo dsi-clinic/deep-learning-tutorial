@@ -2,6 +2,12 @@ This repo contains some exercises and information for deep learning tutorials fo
 
 Note: The code in this repo is for some of the later lessons in this sequence. There is a `main` branch which is a skeleton of a training loop for a computer vision model, a `working` branch which includes the code from the computer vision model, and a `bugs` branch which includes several common problems that either break model training or seriously impact model training results.
 
+## This Code
+
+If you are working with this code on the DSI Cluster and having a hard time getting the environment to solve, [switch to the libmamba solver](https://github.com/dsi-clinic/the-clinic/blob/main/tutorials/conda.md).
+
+## Lesson Plan
+
 Our deep learning tutorials are focused on developing some theoretical intuition for what deep learning models are doing as well as hands-on PyTorch skills.
 
 Here is the outline for the tutorials as well as links to activity notebooks and additional resources.
