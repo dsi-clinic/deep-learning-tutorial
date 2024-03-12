@@ -1,5 +1,7 @@
 This repo contains some exercises and information for deep learning tutorials for the University of Chicago's Data Science Institute.
 
+Note: The code in this repo is for some of the later lessons in this sequence. There is a `main` branch which is a skeleton of a training loop for a computer vision model, a `working` branch which includes the code from the computer vision model, and a `bugs` branch which includes several common problems that either break model training or seriously impact model training results.
+
 Our deep learning tutorials are focused on developing some theoretical intuition for what deep learning models are doing as well as hands-on PyTorch skills.
 
 Here is the outline for the tutorials as well as links to activity notebooks and additional resources.
@@ -26,6 +28,10 @@ Note: This is a modified version of this official PyTorch tutorial: https://pyto
 
 There was no specific notebook for this lesson. We reviewed the computer vision notebook and spent more time talking about cross-entropy loss, how PyTorch implements loss functions, and how back propagation works.
 
+#### Activity
+
+Implement the code from the computer vision tutorial notebook using the `main` branch of this repo as a base.
+
 ### Lesson 5: Transformers & Natural Language Processing
 
 Text classification using Huggingface: https://colab.research.google.com/drive/1IXcGDt83mhtkNO13rFNDvIh3zSCo2sIV?usp=sharing
@@ -38,3 +44,5 @@ Note: This is a modified version of this official Huggingface tutorial: https://
 - Attention is all you need: https://arxiv.org/abs/1706.03762
 
 ### Lesson 6: Debugging
+
+Fix the code in the `bugs` version of this repo. See if you can get the same accuracy as the `working` version of this repo.
