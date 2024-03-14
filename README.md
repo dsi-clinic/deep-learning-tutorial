@@ -52,3 +52,7 @@ Note: This is a modified version of this official Huggingface tutorial: https://
 ### Lesson 6: Debugging
 
 Fix the code in the `bugs` version of this repo. See if you can get the same accuracy as the `working` version of this repo.
+
+#### Resources
+- Deep Learning (Nature, 2015): https://www.nature.com/articles/nature14539
+  - This review paper covers many of the key intuitions covered in these tutorials about feature extraction, loss landscapes, and finding feature spaces that are linearly separable. Note that this is pre-transformers so the section on NLP is focused on recurrent neural network architectures...but the intuitions for representing a sequence of tokens in a vector space are still the same. We now just have a much more powerful way to do it with the attention mechanism.
